@@ -1,0 +1,157 @@
+.menu-wrap
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* .menu-wrap .toggler
+{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    
+} */
+
+.menu-wrap .hamburger
+{
+    position: absolute;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrap .hamburger > div
+{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    /* transition: all 0.4s ease; */
+}
+
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after
+{
+    position: absolute;
+    content: '';
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background-color: inherit;
+}
+
+.menu-wrap .hamburger > div::after
+{
+    top: 10px;
+}
+
+
+/*Toggler animate*/
+.menu-wrap .hamburger.opened > div
+{   
+    transition: all 0.8s ease;
+    transform: rotate(135deg);
+}
+
+/*Turn line in X*/
+.menu-wrap .hamburger.opened > div::after,
+.menu-wrap .hamburger.opened > div::before
+{
+    top : 0;
+    transform: rotate(90deg);
+}
+
+/*Rotate when hovering(opened)*/
+.menu-wrap .hamburger.opened > div:hover
+{
+    transform: rotate(225deg);
+}
+
+
+.menu-wrap .menu
+{
+    position : fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrap .menu > div
+{
+    background-color: var(--overlay-color);
+    border-radius: 10%;
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease
+}
+
+.menu-wrap .menu > div > div
+{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div ul li a
+{
+text-decoration: none;
+color: white;
+transition: color 0.4s ease;
+}
+
+.menu-wrap .menu > div > div ul li
+{
+    list-style-type: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+/*Show menu*/
+.menu-wrap .hamburger.opened ~ .menu
+{
+    visibility: visible;
+}
+
+.menu-wrap .hamburger.opened ~ .menu > div
+{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .hamburger.opened ~ .menu > div > div
+{
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+ 
